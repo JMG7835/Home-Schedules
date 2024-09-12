@@ -6,25 +6,22 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Set;
-
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Schedule {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
-    private String description;
-    private String location;
-    private String startDate;
-    private String endDate;
-    private String status;
-    private Long principalUser;
-    private Set<Long> additionalUsers;
+    private String name;
+    private String email;
+    private String phone;
+    private String address;
+    private String city;
+    private String zip;
+
 
 }
