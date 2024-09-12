@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HomeSchedulesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HomeSchedulesApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HomeSchedulesApplication.class, args);
+    }
 
 }
