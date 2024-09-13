@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/product")
 public class SchedulesController {
+
     @Autowired
-    private final SchedulesService schedulesService;
+    private SchedulesService schedulesService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -22,14 +22,16 @@ public class SchedulesService {
     public void createSchedules(final SchedulesDto schedulesRequestDto) {
 
         final Set<User> additionalUsers = new HashSet<>();
-        schedulesRequestDto.getAdditionalUsers().stream().forEach(additionalUser -> additionalUsers.add(User.builder()
-                .phone(additionalUser.getPhone())
-                .name(additionalUser.getName())
-                .address(additionalUser.getAddress())
-                .email(additionalUser.getEmail())
-                .city(additionalUser.getCity())
-                .zip(additionalUser.getZip())
-                .build()));
+        if(schedulesRequestDto.getAdditionalUsers() != null) {
+            schedulesRequestDto.getAdditionalUsers().stream().forEach(additionalUser -> additionalUsers.add(User.builder()
+                    .phone(additionalUser.getPhone())
+                    .name(additionalUser.getName())
+                    .address(additionalUser.getAddress())
+                    .email(additionalUser.getEmail())
+                    .city(additionalUser.getCity())
+                    .zip(additionalUser.getZip())
+                    .build()));
+        }
         final Schedule schedule = Schedule.builder()
                 .title(schedulesRequestDto.getTitle())
                 .description(schedulesRequestDto.getDescription())

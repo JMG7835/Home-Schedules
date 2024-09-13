@@ -1,11 +1,10 @@
 package org.gadconsulting.homeschedules.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,7 +23,11 @@ public class Schedule {
     private String startDate;
     private String endDate;
     private String status;
-    private Long principalUser;
-    private Set<Long> additionalUsers;
+    @OneToOne
+    @JoinColumn(name = "principal_user_id")
+    private User principalUser;
+    @ManyToMany
+    @JoinTable(name = "additional_users", joinColumns = @JoinColumn(name = "schedule_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> additionalUsers = new HashSet<>();
 
 }
