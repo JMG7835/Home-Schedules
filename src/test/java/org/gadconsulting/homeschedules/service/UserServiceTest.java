@@ -1,7 +1,6 @@
 package org.gadconsulting.homeschedules.service;
 
 import org.gadconsulting.homeschedules.dto.UserDto;
-import org.gadconsulting.homeschedules.model.Schedule;
 import org.gadconsulting.homeschedules.model.User;
 import org.gadconsulting.homeschedules.repository.UserRepository;
 import org.junit.jupiter.api.Test;

@@ -15,15 +15,14 @@ public class SchedulesController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createSchedules(@RequestBody SchedulesDto schedulesRequest){
+    public void createSchedules(@RequestBody SchedulesDto schedulesRequest) {
         schedulesService.createSchedules(schedulesRequest);
-
 
 
     }
 
     @ResponseStatus(HttpStatus.OK)
-    public void updateSchedules(@RequestBody SchedulesDto schedulesRequest){
+    public void updateSchedules(@RequestBody SchedulesDto schedulesRequest) {
 
     }
 }

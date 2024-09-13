@@ -18,12 +18,11 @@ public class SchedulesService {
     private ScheduleRepository scheduleRepository;
 
 
-
     public void createSchedules(final SchedulesDto schedulesRequestDto) {
 
         final Set<User> additionalUsers = new HashSet<>();
-        if(schedulesRequestDto.getAdditionalUsers() != null) {
-            schedulesRequestDto.getAdditionalUsers().stream().forEach(additionalUser -> additionalUsers.add(User.builder()
+        if (schedulesRequestDto.getAdditionalUsers() != null) {
+            schedulesRequestDto.getAdditionalUsers().forEach(additionalUser -> additionalUsers.add(User.builder()
                     .phone(additionalUser.getPhone())
                     .name(additionalUser.getName())
                     .address(additionalUser.getAddress())
