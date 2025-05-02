@@ -23,10 +23,9 @@ public class Schedule {
     private String endDate;
     private String status;
     @OneToOne
-    @JoinColumn(name = "principal_user_id")
     private User principalUser;
     @ManyToMany
-    @JoinTable(name = "additional_users", joinColumns = @JoinColumn(name = "schedule_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "SCHEDULE_USERS", joinColumns = @JoinColumn(name = "schedule_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> additionalUsers = new HashSet<>();
 
 }
