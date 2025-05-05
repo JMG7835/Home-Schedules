@@ -12,14 +12,14 @@
             </not>
 
             <tableExists tableName="SCHEDULE"/>
-            <tableExists tableName="USER"/>
+            <tableExists tableName="USERS"/>
         </preConditions>
 
         <createTable tableName="SCHEDULE_USERS">
-            <column name="user_id" type="varchar(250)" >
-                <constraints nullable="false" foreignKeyName="fk_schedule_users_user" references="user(id)"/>
+            <column name="user_id" type="bigint" >
+                <constraints nullable="false" foreignKeyName="fk_schedule_users_user" references="users(id)"/>
             </column>
-            <column name="schedule_id" type="varchar(250)" >
+            <column name="schedule_id" type="bigint" >
                 <constraints nullable="false" foreignKeyName="fk_schedule_users_schedule" references="schedule(id)"/>
             </column>
         </createTable>

@@ -7,7 +7,7 @@
 
     <changeSet id="202505021400" author="JMG">
         <preConditions onFail="MARK_RAN">
-            <tableExists tableName="USER"/>
+            <tableExists tableName="USERS"/>
             <not>
                 <tableExists tableName="SCHEDULE"/>
             </not>
@@ -28,7 +28,7 @@
             <column name="endDate" type="varchar(250)" />
             <column name="status" type="varchar(250)" />
             <column name="principalUser" type="bigint" >
-                <constraints nullable="false" foreignKeyName="fk_schedule_user" references="user(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_schedule_user" references="USERS(id)"/>
             </column>
         </createTable>
 

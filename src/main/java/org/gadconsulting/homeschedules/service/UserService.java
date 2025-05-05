@@ -3,7 +3,7 @@ package org.gadconsulting.homeschedules.service;
 import lombok.extern.slf4j.Slf4j;
 import org.gadconsulting.homeschedules.dto.UserDto;
 import org.gadconsulting.homeschedules.model.User;
-import org.gadconsulting.homeschedules.repository.UserRepository;
+import org.gadconsulting.homeschedules.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     @Autowired
-    private UserRepository userRepository;
+    private UserDAO userDAO;
 
 
     public void createUser(final UserDto userDto) {
@@ -24,7 +24,7 @@ public class UserService {
                 .city(userDto.getCity())
                 .zip(userDto.getZip())
                 .build();
-        userRepository.save(user);
+        userDAO.save(user);
         log.debug("Created user: {}", user.getId());
     }
 }

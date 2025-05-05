@@ -8,13 +8,13 @@
     <changeSet id="202505021350" author="JMG">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="USER"/>
+                <tableExists tableName="USERS"/>
             </not>
         </preConditions>
 
-        <createTable tableName="USER">
+        <createTable tableName="USERS">
             <column name="id" type="bigint">
-                <constraints primaryKey="true" primaryKeyName="user_id_pk" />
+                <constraints primaryKey="true" primaryKeyName="users_id_pk" />
             </column>
             <column name="name" type="varchar(250)" >
                 <constraints nullable="false"/>
@@ -29,11 +29,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addAutoIncrement tableName="USER" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+        <addAutoIncrement tableName="USERS" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
         <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
 
         <rollback>
-            <dropTable tableName="USER"/>
+            <dropTable tableName="USERS"/>
         </rollback>
 
     </changeSet>

@@ -2,7 +2,7 @@ package org.gadconsulting.homeschedules.service;
 
 import org.gadconsulting.homeschedules.dto.UserDto;
 import org.gadconsulting.homeschedules.model.User;
-import org.gadconsulting.homeschedules.repository.UserRepository;
+import org.gadconsulting.homeschedules.dao.UserDAO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 class UserServiceTest {
 
     @Mock
-    private UserRepository userRepositoryMock;
+    private UserDAO userDAOMock;
 
     @Captor
     private ArgumentCaptor<User> userCaptor;
@@ -31,11 +31,11 @@ class UserServiceTest {
     public void testCreateUser() {
         final UserDto userDto = new UserDto();
 
-        when(userRepositoryMock.save(any())).thenReturn(new User());
+        when(userDAOMock.save(any())).thenReturn(new User());
 
         userService.createUser(userDto);
 
-        verify(userRepositoryMock, times(1)).save(userCaptor.capture());
+        verify(userDAOMock, times(1)).save(userCaptor.capture());
 
         User user = userCaptor.getValue();
         assertThat(user.getName()).isEqualTo(userDto.getName());
