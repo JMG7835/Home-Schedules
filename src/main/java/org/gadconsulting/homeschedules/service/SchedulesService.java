@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.gadconsulting.homeschedules.dto.SchedulesDto;
 import org.gadconsulting.homeschedules.model.Schedule;
 import org.gadconsulting.homeschedules.model.User;
-import org.gadconsulting.homeschedules.dao.ScheduleDAO;
+import org.gadconsulting.homeschedules.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.Set;
 @Slf4j
 public class SchedulesService {
     @Autowired
-    private ScheduleDAO scheduleDAO;
+    private ScheduleRepository scheduleRepository;
 
 
     public void createSchedules(final SchedulesDto schedulesRequestDto) {
@@ -47,7 +47,7 @@ public class SchedulesService {
                         .zip(schedulesRequestDto.getPrincipalUser().getZip())
                         .build()).build()
                 ;
-        scheduleDAO.save(schedule);
+        scheduleRepository.save(schedule);
         log.debug("Created Schedule: {}", schedule.getId());
     }
 
