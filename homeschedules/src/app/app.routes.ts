@@ -12,7 +12,7 @@ export const routes: Routes = [
     component: UserListComponent
   },
   {
-    path: 'user',
+    path: 'users',
     component: UserListComponent
   },{
     path: 'schedules',
