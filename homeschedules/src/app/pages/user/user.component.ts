@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, InputSignal} from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import {User} from '../../models/user.models'
 
 @Component({
   selector: 'app-user',
@@ -11,10 +12,5 @@ import {MatChipsModule} from '@angular/material/chips';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserComponent {
-   name: string = "toto" ;
-   email: string = "toto" ;
-   phone: string = "toto";
-   address: string = "toto";
-   city: string = "toto" ;
-   zip: string = "toto";
+   user : InputSignal<User> = input(new User());
 }
