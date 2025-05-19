@@ -1,7 +1,7 @@
 package org.gadconsulting.homeschedules.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.gadconsulting.homeschedules.dto.SchedulesDto;
+import org.gadconsulting.homeschedules.dto.ScheduleDto;
 import org.gadconsulting.homeschedules.model.Schedule;
 import org.gadconsulting.homeschedules.model.User;
 import org.gadconsulting.homeschedules.repository.ScheduleRepository;
@@ -13,12 +13,12 @@ import java.util.Set;
 
 @Service
 @Slf4j
-public class SchedulesService {
+public class SchedulesService {/*
     @Autowired
     private ScheduleRepository scheduleRepository;
 
 
-    public void createSchedules(final SchedulesDto schedulesRequestDto) {
+    public void createSchedules(final ScheduleDto schedulesRequestDto) {
 
         final Set<User> additionalUsers = new HashSet<>();
         if (schedulesRequestDto.getAdditionalUsers() != null) {
@@ -51,6 +51,6 @@ public class SchedulesService {
         log.debug("Created Schedule: {}", schedule.getId());
     }
 
-
+*/
 }
 

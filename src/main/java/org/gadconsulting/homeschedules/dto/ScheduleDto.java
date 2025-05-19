@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SchedulesDto {
+public class ScheduleDto {
     private String title;
     private String description;
     private String location;
