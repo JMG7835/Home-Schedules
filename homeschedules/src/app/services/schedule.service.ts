@@ -1,13 +1,24 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Schedule } from '../models/schedule.models';
+import{ ISchedule } from '../interfaces/schedule.interface';
+import { map, Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScheduleService {
-  private apiUrl = 'http://localhost:3000/schedule';
-  constructor(private http: HttpClient) {}
-  getSchedules(page: number, limit: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}?page=${page}&limit=${limit}`);
+  private BASE_URL = 'http://localhost:8080/api/schedule';
+  private http = inject(HttpClient);
+
+ getAll(): Observable<Schedule[]> {
+    return this.http.get<ISchedule[]>(this.BASE_URL).pipe(
+      map(scheduleArray => {
+        return scheduleArray.map<Schedule>(
+          scheduleArray => Schedule.fromJson(scheduleArray)
+        )
+      })
+    );
   }
+}

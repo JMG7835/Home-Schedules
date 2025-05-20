@@ -4,7 +4,10 @@ import org.gadconsulting.homeschedules.dto.UserDto;
 import org.gadconsulting.homeschedules.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/user")
@@ -14,25 +17,24 @@ public class UsersController {
     private UsersService usersService;
 
     @GetMapping("/{userName}")
-    @ResponseStatus(HttpStatus.OK)
-    public void getUsers(@RequestBody String userName) {
-        usersService.getUsers(userName);
+    public ResponseEntity<List<UserDto>> getUsers(@RequestBody String userName) {
+        return ResponseEntity.ok(usersService.getUsers(userName));
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public void getUsers() {
-        usersService.getUsers();
+    public ResponseEntity<List<UserDto>> getUsers() {
+        return ResponseEntity.ok(usersService.getUsers());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUsers(@RequestBody UserDto user) {
-        usersService.createUserOrUpdate(user);
+    public ResponseEntity<UserDto> createUsers(@RequestBody UserDto user) {
+        return ResponseEntity.ok(usersService.createUserOrUpdate(user));
     }
 
     @ResponseStatus(HttpStatus.OK)
-    public void updateSchedules(@RequestBody UserDto user) {
-        usersService.createUserOrUpdate(user);
+    public ResponseEntity<UserDto> updateSchedules(@RequestBody UserDto user) {
+        return ResponseEntity.ok(usersService.createUserOrUpdate(user));
     }
 }

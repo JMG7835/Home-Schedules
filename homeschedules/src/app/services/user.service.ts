@@ -14,9 +14,7 @@ export class UserService {
   getAll(): Observable<User[]> {
     return this.http.get<IUser[]>(this.BASE_URL).pipe(
       map(userArray => {
-        return userArray.map<User>(
-          userArray => User.fromJson(userArray)
-        )
+        return this.jsonArray(userArray);
       })
     );
   }
@@ -24,9 +22,7 @@ export class UserService {
   get(userNamr: string): Observable<User[]> {
     return this.http.get<IUser[]>(this.BASE_URL+userNamr+'/').pipe(
       map(userArray => {
-        return userArray.map<User>(
-          userArray => User.fromJson(userArray)
-        )
+        return this.jsonArray(userArray);
       })
     );
   }
@@ -43,5 +39,14 @@ export class UserService {
     ) 
   }
 
+  jsonArray(userArray : any[]){
+    if(userArray.length>0){
+      return userArray.map<User>(
+        userArray => User.fromJson(userArray)
+      )
+    }else{
+      return [];
+    }
+  }
 
 }
