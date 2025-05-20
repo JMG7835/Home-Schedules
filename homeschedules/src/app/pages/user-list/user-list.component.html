@@ -1,4 +1,7 @@
-<app-search-bar/>
+<div id="header">
+  <app-search-bar/>
+    <button mat-stroked-button (click)="createUser()">create user</button>
+</div>
 @if(dataSource.data.length > 0){
   <div id="UserFound" class="center" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
