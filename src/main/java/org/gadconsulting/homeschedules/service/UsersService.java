@@ -19,21 +19,25 @@ public class UsersService {
 
 
     public List<UserDto> getUsers(final String user) {
+        log.info("user call with '{}'",user);
         return userMapper.toDtos(userRepository.findByNameContainsOrderByNameAsc(user));
     }
 
     public List<UserDto> getUsers() {
+        log.info("alluser");
         return userMapper.toDtos(userRepository.findAllByOrderByNameAsc());
     }
 
     public UserDto getUser(final String user) {
+        log.info("find user '{}'",user);
         return userMapper.toDto(userRepository.findByName(user));
     }
 
     public UserDto createUserOrUpdate(final UserDto userDto) {
 
+        log.info("create user '{}'",userDto.getName());
         UserDto newUserDto = userMapper.toDto(userRepository.save(userMapper.toEntity(userDto)));
-        log.debug("Created user: {}", userDto.toString());
+        log.info("user Created");
         return newUserDto;
     }
 }

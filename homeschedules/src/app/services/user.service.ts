@@ -8,7 +8,7 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private BASE_URL = 'http://localhost:8080/user';
+  private BASE_URL = 'http://localhost:8080/api/user';
   private http = inject(HttpClient);
 
   getAll(): Observable<User[]> {
