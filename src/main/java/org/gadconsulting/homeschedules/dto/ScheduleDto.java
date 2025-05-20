@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScheduleDto {
+    private Long id;
     private String title;
     private String description;
     private String location;

@@ -12,13 +12,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
+    public static final String TOTO = "TOTO";
     @Mock
     private UserRepository userRepositoryMock;
 
@@ -33,17 +33,30 @@ class UserServiceTest {
 
     @Test
     public void testCreateUser() {
-        final UserDto userDto = new UserDto();
-
         when(userRepositoryMock.save(any())).thenReturn(new User());
         when(userMapper.toDto(any())).thenReturn(new UserDto());
+        when(userMapper.toEntity(any())).thenReturn(new User());
 
-        userService.createUser(userDto);
+        userService.createUserOrUpdate(new UserDto());
 
         verify(userRepositoryMock, times(1)).save(userCaptor.capture());
+    }
 
-        User user = userCaptor.getValue();
-        assertThat(user.getName()).isEqualTo(userDto.getName());
+    @Test
+    public void testGetUsers_findByString() {
+        userService.getUsers(TOTO);
+        verify(userRepositoryMock, times(1)).findByNameContainsOrderByNameAsc(anyString());
+    }
 
+    @Test
+    public void testGetUsers_findAll() {
+        userService.getUsers();
+        verify(userRepositoryMock, times(1)).findAllByOrderByNameAsc();
+    }
+
+    @Test
+    public void getUser_findByName() {
+        userService.getUser(TOTO);
+        verify(userRepositoryMock, times(1)).findByName(anyString());
     }
 }

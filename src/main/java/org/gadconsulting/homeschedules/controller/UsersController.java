@@ -16,23 +16,23 @@ public class UsersController {
     @GetMapping("/{userName}")
     @ResponseStatus(HttpStatus.OK)
     public void getUsers(@RequestBody String userName) {
-       // usersService.getUsers(userName);
+        usersService.getUsers(userName);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public void getUsers() {
-       // usersService.getUsers();
+        usersService.getUsers();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createUsers(@RequestBody UserDto user) {
-        //usersService.createUser(user);
+        usersService.createUserOrUpdate(user);
     }
 
     @ResponseStatus(HttpStatus.OK)
     public void updateSchedules(@RequestBody UserDto user) {
-       // usersService.updateUser(user);
+        usersService.createUserOrUpdate(user);
     }
 }

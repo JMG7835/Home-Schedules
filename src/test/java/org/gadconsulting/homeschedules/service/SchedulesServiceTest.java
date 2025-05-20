@@ -1,7 +1,7 @@
 package org.gadconsulting.homeschedules.service;
 
 import org.gadconsulting.homeschedules.dto.ScheduleDto;
-import org.gadconsulting.homeschedules.dto.UserDto;
+import org.gadconsulting.homeschedules.mapper.SchedulesMapper;
 import org.gadconsulting.homeschedules.model.Schedule;
 import org.gadconsulting.homeschedules.repository.ScheduleRepository;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -21,6 +20,9 @@ public class SchedulesServiceTest {
 
     @Mock
     private ScheduleRepository scheduleRepositoryMock;
+
+    @Mock
+    private SchedulesMapper schedulesMapper;
 
     @Captor
     private ArgumentCaptor<Schedule> scheduleCaptor;
@@ -31,19 +33,13 @@ public class SchedulesServiceTest {
     @Test
     public void testCreateSchedules() {
 
-        final UserDto userDto = UserDto.builder()
-                .phone("0123456789").build();
-        final ScheduleDto schedulesDto = ScheduleDto.builder().principalUser(userDto).build();
+
 
         when(scheduleRepositoryMock.save(any())).thenReturn(new Schedule());
-        schedulesService.createSchedules(schedulesDto);
+        when(schedulesMapper.toDto(any())).thenReturn(new ScheduleDto());
+        when(schedulesMapper.toEntity(any())).thenReturn(new Schedule());
+        schedulesService.createSchedules(new ScheduleDto());
         verify(scheduleRepositoryMock, times(1)).save(scheduleCaptor.capture());
-
-        Schedule schedule = scheduleCaptor.getValue();
-        assertThat(schedule.getTitle()).isEqualTo(schedulesDto.getTitle());
-        assertThat(schedule.getStatus()).isEqualTo(schedulesDto.getStatus());
-        assertThat(schedule.getStartDate()).isEqualTo(schedulesDto.getStartDate());
-
     }
 
 
