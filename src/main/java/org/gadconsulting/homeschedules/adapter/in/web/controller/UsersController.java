@@ -1,7 +1,7 @@
-package org.gadconsulting.homeschedules.controller;
+package org.gadconsulting.homeschedules.adapter.in.web.controller;
 
-import org.gadconsulting.homeschedules.dto.UserDto;
-import org.gadconsulting.homeschedules.service.UsersService;
+import org.gadconsulting.homeschedules.adapter.in.dto.UserDto;
+import org.gadconsulting.homeschedules.application.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

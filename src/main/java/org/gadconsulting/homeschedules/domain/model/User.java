@@ -1,4 +1,4 @@
-package org.gadconsulting.homeschedules.model;
+package org.gadconsulting.homeschedules.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;

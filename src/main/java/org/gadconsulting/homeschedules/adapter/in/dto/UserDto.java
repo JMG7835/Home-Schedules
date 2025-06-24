@@ -1,4 +1,4 @@
-package org.gadconsulting.homeschedules.dto;
+package org.gadconsulting.homeschedules.adapter.in.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

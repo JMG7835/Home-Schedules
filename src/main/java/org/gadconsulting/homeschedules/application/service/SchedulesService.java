@@ -1,9 +1,9 @@
-package org.gadconsulting.homeschedules.service;
+package org.gadconsulting.homeschedules.application.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.gadconsulting.homeschedules.dto.ScheduleDto;
-import org.gadconsulting.homeschedules.mapper.SchedulesMapper;
-import org.gadconsulting.homeschedules.repository.ScheduleRepository;
+import org.gadconsulting.homeschedules.adapter.in.dto.ScheduleDto;
+import org.gadconsulting.homeschedules.adapter.in.mapper.SchedulesMapper;
+import org.gadconsulting.homeschedules.domain.ports.out.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

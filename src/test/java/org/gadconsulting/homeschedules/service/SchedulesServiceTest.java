@@ -1,9 +1,10 @@
 package org.gadconsulting.homeschedules.service;
 
-import org.gadconsulting.homeschedules.dto.ScheduleDto;
-import org.gadconsulting.homeschedules.mapper.SchedulesMapper;
-import org.gadconsulting.homeschedules.model.Schedule;
-import org.gadconsulting.homeschedules.repository.ScheduleRepository;
+import org.gadconsulting.homeschedules.application.service.SchedulesService;
+import org.gadconsulting.homeschedules.adapter.in.dto.ScheduleDto;
+import org.gadconsulting.homeschedules.adapter.in.mapper.SchedulesMapper;
+import org.gadconsulting.homeschedules.domain.model.Schedule;
+import org.gadconsulting.homeschedules.domain.ports.out.repository.ScheduleRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
