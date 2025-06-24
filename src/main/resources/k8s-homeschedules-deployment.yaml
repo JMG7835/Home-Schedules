@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homeschedules
+  labels:
+    app: homeschedules
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: homeschedules
+  template:
+    metadata:
+      name: homeschedules
+      labels:
+        app: homeschedules
+    spec:
+      containers:
+        - name: homeschedules
+          image: homeschedules:0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+      
