@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="202505021415" author="JMG">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="SCHEDULE_USERS"/>
+            </not>
+
+            <tableExists tableName="SCHEDULE"/>
+            <tableExists tableName="USERS"/>
+        </preConditions>
+
+        <createTable tableName="SCHEDULE_USERS">
+            <column name="user_id" type="bigint" >
+                <constraints nullable="false" foreignKeyName="fk_schedule_users_user" references="users(id)"/>
+            </column>
+            <column name="schedule_id" type="bigint" >
+                <constraints nullable="false" foreignKeyName="fk_schedule_users_schedule" references="schedule(id)"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint  columnNames="user_id, schedule_id"
+                              constraintName="user_schedule"
+                              tableName="SCHEDULE_USERS"/>
+
+        <rollback>
+            <dropTable tableName="SCHEDULE_USERS"/>
+        </rollback>
+
+    </changeSet>
+
+</databaseChangeLog>
